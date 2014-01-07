@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 describe "StaticPages" do
   
 describe "title" do
