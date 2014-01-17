@@ -1,11 +1,18 @@
 source 'https://rubygems.org'
-
+ruby '2.0.0' 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+
+
+gem 'activeadmin', github: 'gregbell/active_admin'
+#gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 group :development, :test do
+	gem 'rack', '1.5.2'
+	gem "thin"
+	gem "quiet_assets"
 	gem "rspec-rails"
 	gem "factory_girl_rails"
 	gem "capybara"

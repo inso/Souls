@@ -1,6 +1,8 @@
 Souls::Application.routes.draw do
-  get "souls/souls"
-  get "laird/laird"
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
+  get "souls/index"
+  get "laird/index"
   get "pages/home"
   get "pages/contact"
   get "work_as/work_as"
@@ -8,7 +10,7 @@ Souls::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'pages#home'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
