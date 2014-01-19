@@ -1,0 +1,2 @@
+class LairdsController < ApplicationController
+end

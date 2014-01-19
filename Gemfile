@@ -5,9 +5,11 @@ gem 'rails', '4.0.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-
-
 gem 'activeadmin', github: 'gregbell/active_admin'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'russian'
+
 #gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 group :development, :test do
 	gem 'rack', '1.5.2'
@@ -47,13 +49,16 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+
+

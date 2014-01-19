@@ -1,7 +1,7 @@
 class SoulsController < ApplicationController
 
   def index
-    
+  
   	if params[:category]
   		@souls = Soul.where(category_id: params[:category] )
   	else

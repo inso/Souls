@@ -1,4 +1,4 @@
-ActiveAdmin.register Soul do
+ActiveAdmin.register WorkAs do
 
   
   # See permitted parameters documentation:
