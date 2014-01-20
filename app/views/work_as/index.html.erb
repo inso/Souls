@@ -1,3 +1,16 @@
 <% provide(:title, "Work As") %>
 
-<p>Find me in app/views/work_as/work_as.html.erb</p>
+<div class="header2">Посади</div>
+<br/>
+<div class="souls">
+	<% @works.each do |work| %>
+		<div class="soul grid_3">
+		<div style="min-height:150px">
+			<%= link_to image_tag(work_as.image || "product_blank.png", :alt => "home image")%>
+		</div>	
+			<div>
+				<%= work_as.name%>
+			</div>
+		</div>	
+	<%end%>
+</div>	

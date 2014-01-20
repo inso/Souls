@@ -1,2 +1,16 @@
 <% provide(:title, 'Laird') %>
-<p>Find me in app/views/laird/laird.html.erb</p>
+
+<div class="header2">Поміщики</div>
+<br/>
+<div class="souls">
+	<% @lairds.each do |laird| %>
+		<div class="soul grid_3">
+		<div style="min-height:150px">
+			<%= link_to image_tag(laird.image || "product_blank.png", :alt => "home image")%>
+		</div>	
+			<div>
+				<%= laird.full_name%>
+			</div>
+		</div>	
+	<%end%>
+</div>	

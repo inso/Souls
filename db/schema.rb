@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140119235350) do
+ActiveRecord::Schema.define(version: 20140120072010) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -83,7 +83,7 @@ ActiveRecord::Schema.define(version: 20140119235350) do
   end
 
   create_table "work_as", force: true do |t|
-    t.string   "work_as"
+    t.string   "name"
     t.integer  "category_id"
     t.string   "image"
     t.integer  "old"
@@ -92,6 +92,9 @@ ActiveRecord::Schema.define(version: 20140119235350) do
     t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "laird_id"
   end
+
+  add_index "work_as", ["laird_id"], name: "index_work_as_on_laird_id", using: :btree
 
 end
