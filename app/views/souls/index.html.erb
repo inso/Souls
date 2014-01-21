@@ -1,18 +1,25 @@
 <% provide(:title, "Souls") %>
-
-<div class="header2">Мертві душі</div>
-<br/>
-<div class="souls">
-	<% @souls.each do |soul| %>
-		<div class="soul grid_3">
-		<div style="min-height:150px">
-			<%= link_to image_tag(soul.image || "product_blank.png", :alt => "home image")%>
-		</div>	
-			<div>
-				<%= soul.second_name%>
-				<%= soul.name%>
-				<%= soul.pname%>
+<div class="category">
+		<% Category.all.each do |soul| %>
+			<div>	
+				<%= link_to soul.name, souls_index_path(category: soul.id) %>
 			</div>
-		</div>	
-	<%end%>
-</div>	
+			<%end%>
+	</div>
+<div class="info">	
+	<div class="header2">Мертві душі</div>
+	<br/>
+	<div class="souls">
+		<% @souls.each do |soul| %>
+			<div class="soul grid_3">
+			<div style="min-height:150px">
+				<%= link_to image_tag(soul.image || 'product_blank.png'), souls_show_path %>
+			</div>	
+				<div>
+					<%= link_to "#{soul.second_name} #{soul.name}", souls_show_path%>
+					<%= link_to soul.pname, souls_show_path%>
+				</div>
+			</div>	
+		<%end%>
+	</div>
+</div>		

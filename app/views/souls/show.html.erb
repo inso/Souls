@@ -1,0 +1,18 @@
+<div class="category">
+		<% Category.all.each do |soul| %>
+			<div>	
+				<%= link_to soul.name, souls_index_path(category: soul.id) %>
+			</div>
+			<%end%>
+</div>
+
+<div class="info">	
+	<div class="header2">Мертві душі</div>
+	<br/>
+	<div class="souls">
+		<%= soul.image%>
+		<%= soul.second_name%>
+		<%= soul.name%>
+		<%= soul.pname%>
+	</div>
+</div>	

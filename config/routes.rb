@@ -3,6 +3,7 @@ Souls::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get "souls/index"
+  get "souls/show"
   get "lairds/index"
   get "pages/home"
   get "pages/contact"

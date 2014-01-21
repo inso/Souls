@@ -35,7 +35,10 @@
 }
 .info
 {
-	margin-top: 20px;	
+	margin-top: 20px;
+	margin-left: 200px;
+	width: 700px;
+
 }
 .menu
 {
@@ -55,6 +58,6 @@ a {
 }
 .content
 {
-	width: 700px;
-	margin-left: 200px;
+	width: 900px;
+	
 }
