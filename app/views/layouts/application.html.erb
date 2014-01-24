@@ -8,13 +8,10 @@
 </head>
 <body>
 <div class="page">
-<div class='header'>
-	<div class="header1"><%= link_to image_tag("../log.png", alt:"home image", border:0, size:'110x70'), root_path %> <%= full_title(yield(:title))%>
-	</div>
-</div>
+<%= render '/layouts/header'%>
 <div class="menu">
 	<table align="center" width="900">
-		<tr ><td width="210"><%= link_to "", root_path %></td><td><%= link_to "Головна", root_path %></td><td><%= link_to "Душі", souls_index_path %></td><td><%= link_to "Поміщики", lairds_index_path %></td><td><%= link_to "Посади", work_as_index_path %></td><td><%= link_to "Контакти", pages_contact_path %></td><td><%= link_to "Про сайт", root_path %></td></tr>
+		<tr ><td width="210"><%= link_to "", root_path %></td><td><%= link_to "Головна", root_path %></td><td><%= link_to "Душі", souls_path %></td><td><%= link_to "Поміщики", lairds_path %></td><td><%= link_to "Посади", work_as_path %></td><td><%= link_to "Контакти", contact_path %></td><td><%= link_to "Про сайт", root_path %></td></tr>
 	</table>
 </div>
 	<div class="content">

@@ -1,10 +1,10 @@
 class LairdsController < ApplicationController
 def index
   
-  	if params[:category]
-  		@lairds = Laird.where(category_id: params[:category] )
+  	@lairds = if params[:category]
+  		Laird.where(category_id: params[:category] )
   	else
-  		@lairds = Laird.all
+  		Laird.all
   	end	
   end
 

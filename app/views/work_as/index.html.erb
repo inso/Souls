@@ -1,16 +1,20 @@
 <% provide(:title, "Work As") %>
-
-<div class="header2">Посади</div>
-<br/>
-<div class="souls">
-	<% @works.each do |work| %>
-		<div class="soul grid_3">
-		<div style="min-height:150px">
-			<%= link_to image_tag(work_as.image || "product_blank.png", :alt => "home image")%>
-		</div>	
-			<div>
-				<%= work_as.name%>
-			</div>
-		</div>	
-	<%end%>
-</div>	
+<div class="category">
+		<%= render '/work_as/menu'%>
+</div>
+<div class="info">	
+	<div class="header2">Посади</div>
+	<br/>
+	<div class="souls">
+		<% @works.each do |work| %>
+			<div class="soul grid_3">
+			<div style="min-height:150px">
+				<%= link_to image_tag(work.image_url || "product_blank.gif", :alt => "home image")%>
+			</div>	
+				<div>
+					<%= work.name%>
+				</div>
+			</div>	
+		<%end%>
+	</div>
+</div>		

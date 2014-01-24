@@ -2,19 +2,25 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .souls {
+display: inline;   
+width: 200px;
+
   .soul {
     width: 200px;
     height: 200px;
     text-align: center;
+    
     
     img {
       max-width: 150px;
       max-height: 150px;
       
     }
+    
     a {
       display: block;
     }
     
-  }
+   }
+
 }

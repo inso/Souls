@@ -6,6 +6,14 @@ class SoulImageUploader < CarrierWave::Uploader::Base
 include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
 
+CarrierWave::SanitizedFile.sanitize_regexp = /[^[:word:]\.\-\+]/
+
+def filename
+    if original_filename
+      @name = Russian.translit(original_filename)
+      "#{@name}" #.#{file.extension}
+    end
+end
   # Choose what kind of storage to use for this uploader:
   storage :file
   # storage :fog
@@ -35,6 +43,11 @@ include CarrierWave::RMagick
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  
+    version :thumb do
+     process resize_to_fill: [250, 250]
+  end
+
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

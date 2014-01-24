@@ -1,10 +1,6 @@
 <% provide(:title, 'Laird') %>
 <div class="category">
-		<% Category.all.each do |laird| %>
-			<div>	
-				<%= link_to laird.name, lairds_index_path(category: laird.id) %>
-			</div>
-		<%end%>
+		<%= render '/lairds/menu'%>
 </div>
 <div class="info">
 	<div class="header2">Поміщики</div>
@@ -13,10 +9,10 @@
 		<% @lairds.each do |laird| %>
 			<div class="soul grid_3">
 			<div style="min-height:150px">
-				<%= link_to image_tag(laird.image || "product_blank.png", :alt => "home image")%>
+				<%= link_to image_tag(laird.image_url || "product_blank.gif", :alt => "home image"), laird%>
 			</div>	
 				<div>
-					<%= laird.full_name%>
+					<%= link_to laird.full_name, laird%>
 				</div>
 			</div>	
 		<%end%>

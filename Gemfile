@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'russian'
 
+
 #gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 group :development, :test do
 	gem 'rack', '1.5.2'

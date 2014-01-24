@@ -2,12 +2,16 @@ Souls::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
+  resources :souls, :lairds, :pages, :work_as
+  
   get "souls/index"
-  get "souls/show"
-  get "lairds/index"
-  get "pages/home"
-  get "pages/contact"
-  get "work_as/index"
+  #get "souls/show"
+  #get "lairds/index"
+  #get "lairds/show"
+  #get "pages/home"
+  get 'contact'=>'pages#contact'
+  #get "work_as/index"
+  #get "work_as/show"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

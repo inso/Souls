@@ -9,8 +9,8 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require text
  *= require reset
+ *= require text
  *= require 960_12_col
  *= require souls.css.scss
  */
@@ -37,18 +37,30 @@
 {
 	margin-top: 20px;
 	margin-left: 200px;
+	padding-left: 20px;
 	width: 700px;
-
 }
+
+.shot_info {
+	padding-left: 10px;	
+}
+
+.full_info {
+	padding-left: 10px;	
+}
+
 .menu
 {
 	background-color: #1E6EFA;
 	text-align: center;
 }
-a {
-		text-decoration: none;
-		color: black;
-	}
+
+a 
+{
+	text-decoration: none;
+	color: black;
+}
+
 .category
 {
 	width: 200px;
@@ -56,8 +68,14 @@ a {
 	text-align: center;
 	float: left;
 }
+
 .content
 {
 	width: 900px;
-	
+	margin-bottom: 150px;
+}
+
+.tab td {
+	text-align: right; 
+	vertical-align: top;
 }

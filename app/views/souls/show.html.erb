@@ -1,18 +1,89 @@
 <div class="category">
-		<% Category.all.each do |soul| %>
-			<div>	
-				<%= link_to soul.name, souls_index_path(category: soul.id) %>
-			</div>
-			<%end%>
+		<%= render '/souls/menu'%>
 </div>
 
 <div class="info">	
 	<div class="header2">Мертві душі</div>
 	<br/>
-	<div class="souls">
-		<%= soul.image%>
-		<%= soul.second_name%>
-		<%= soul.name%>
-		<%= soul.pname%>
+	
+	<br/>
+
+	<div class="shot_info">
+	<table class="tab">
+		<tr>
+			<td rowspan="8" width="40%"><p><%= image_tag(@souls.image_url || 'product_blank.gif', width: "250px", alt: "photo lairds") %></p></td>
+			<td width="100px" >
+				<h4>Прізвище: </h4>
+			</td>
+			<td width="150px" align="right">
+				<%= @souls.second_name%>
+			</td>
+		</tr>
+		<div class="souls">
+				
+	</div>
+		<tr>	
+			<td >
+					<h4>Ім'я: </h4>
+			</td>
+			<td>
+					<%= @souls.name%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>По-батькові: </h4>
+			</td>
+			<td>
+					<%= @souls.pname%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>Вік: </h4>
+			</td>
+			<td>
+					<%= @souls.old%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>Спеціальність: </h4>
+			</td>
+			<td>
+					<%= @souls.category.name%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>Заробітня плата: </h4>
+			</td>
+			<td>
+					<%= @souls.price%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>Телефон: </h4>
+			</td>
+			<td>
+					<%= @souls.phone%>
+			</td>
+		</tr>
+		<tr>	
+			<td >
+					<h4>email: </h4>
+			</td>
+			<td>
+					<%= @souls.email%>
+			</td>
+		</tr>
+	</table>	
+				
+		
+	</div>
+	<div class="full_info">
+		<%= @souls.describe%>
+
 	</div>
 </div>	

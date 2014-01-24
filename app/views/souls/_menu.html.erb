@@ -1,0 +1,5 @@
+<% Category.all.each do |soul| %>
+	<div>	
+		<%= link_to soul.name, souls_path(category: soul.id) %>
+	</div>
+<%end%>

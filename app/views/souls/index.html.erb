@@ -1,23 +1,19 @@
 <% provide(:title, "Souls") %>
 <div class="category">
-		<% Category.all.each do |soul| %>
-			<div>	
-				<%= link_to soul.name, souls_index_path(category: soul.id) %>
-			</div>
-			<%end%>
-	</div>
+		<%= render '/souls/menu'%>
+</div>
 <div class="info">	
 	<div class="header2">Мертві душі</div>
 	<br/>
 	<div class="souls">
 		<% @souls.each do |soul| %>
 			<div class="soul grid_3">
-			<div style="min-height:150px">
-				<%= link_to image_tag(soul.image || 'product_blank.png'), souls_show_path %>
-			</div>	
+				<div style="min-height:140px">
+					<%= link_to image_tag(soul.image_url(:thumb)||'product_blank.gif'), soul %>
+				</div>	
 				<div>
-					<%= link_to "#{soul.second_name} #{soul.name}", souls_show_path%>
-					<%= link_to soul.pname, souls_show_path%>
+					<%= link_to "#{soul.second_name} #{soul.name} #{soul.pname}" , soul%>
+					<%= number_to_currency(soul.price, unit: "грн", separator: ",", delimiter: "", format: "%n %u")%>
 				</div>
 			</div>	
 		<%end%>

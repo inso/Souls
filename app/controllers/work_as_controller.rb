@@ -1,11 +1,11 @@
 class WorkAsController < ApplicationController
 def index
   
-  	if params[:category]
-  		@works = Work_as.where(category_id: params[:category], laird_id: params[:laird] )
+  	@works =  if params[:category]
+  		WorkAs.where(category_id: params[:category], laird_id: params[:laird] )
 
   	else
-  		@works = Work_as.all
+  		WorkAs.all
   	end	
   end
 
@@ -13,7 +13,7 @@ def index
   end
 
   def show
-  	@works = Work_as.find(params[:id])
+  	@works = WorkAs.find(params[:id])
   end
 
 end

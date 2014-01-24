@@ -1,0 +1,5 @@
+<% Category.all.each do |laird| %>
+			<div>	
+				<%= link_to laird.name, lairds_path(category: laird.id) %>
+			</div>
+		<%end%>

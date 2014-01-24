@@ -2,10 +2,10 @@ class SoulsController < ApplicationController
 
   def index
   
-  	if params[:category]
-  		@souls = Soul.where(category_id: params[:category] )
+  	@souls = if params[:category]
+  		Soul.where(category_id: params[:category] )
   	else
-  		@souls = Soul.all
+  		Soul.all
   	end	
   end
 
