@@ -1,21 +1,32 @@
 <% provide(:title, "Souls") %>
+
 <div class="category">
 		<%= render '/souls/menu'%>
 </div>
 <div class="info">	
 	<div class="header2">Мертві душі</div>
 	<br/>
+	<div class="sorting">
+		<b>По імені:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), souls_path(sort: 'name_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), souls_path(sort: 'name_desc') %>
+		<b>По ціні:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), souls_path(sort: 'price_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), souls_path(sort: 'price_desc') %>
+	</div>
 	<div class="souls">
 		<% @souls.each do |soul| %>
 			<div class="soul grid_3">
-				<div style="min-height:140px">
+				<div style="min-height:150px">
 					<%= link_to image_tag(soul.image_url(:thumb)||'product_blank.gif'), soul %>
 				</div>	
 				<div>
 					<%= link_to "#{soul.second_name} #{soul.name} #{soul.pname}" , soul%>
 					<%= number_to_currency(soul.price, unit: "грн", separator: ",", delimiter: "", format: "%n %u")%>
 				</div>
+				<%= link_to "Додати до співбесіди", "#", class: 'add_to_card' %>
 			</div>	
 		<%end%>
 	</div>
-</div>		
+	
+	<div class="pages">
+	<%= will_paginate @souls%>
+	</div>
+
+</div>

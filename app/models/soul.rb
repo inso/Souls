@@ -7,8 +7,8 @@ class Soul < ActiveRecord::Base
 
 mount_uploader :image, SoulImageUploader
 
-# 	def to_param
-# 		"#{id}-#{Russian::transliterate(name).parameterize}"		
-# 	end
+def to_param
+	"#{id}-#{Russian::transliterate(name).parameterize}"		
+end
 
 end

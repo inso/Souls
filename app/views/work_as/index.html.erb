@@ -3,18 +3,29 @@
 		<%= render '/work_as/menu'%>
 </div>
 <div class="info">	
-	<div class="header2">Посади</div>
+	<div class="header2">Вакансії</div>
 	<br/>
+	<div class="sorting">
+		<b>По імені:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), work_as_path(sort: 'name_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), work_as_path(sort: 'name_desc')%>
+		<b>По ціні:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), work_as_path(sort: 'price_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), work_as_path(sort: 'price_desc')%>
+	</div>
 	<div class="souls">
 		<% @works.each do |work| %>
 			<div class="soul grid_3">
-			<div style="min-height:150px">
-				<%= link_to image_tag(work.image_url || "product_blank.gif", :alt => "home image")%>
-			</div>	
+				<div style="min-height:150px">
+					<%= link_to image_tag(work.image_url || "product_blank.gif", :alt => "home image")%>
+				</div>	
+				
 				<div>
 					<%= work.name%>
+					<p><%= number_to_currency(work.price, unit: "грн", separator: ",", delimiter: "", format: "%n %u")%></p>
 				</div>
+				
+				<%= link_to "Замовити співбесіду", "#", class: 'add_to_card' %>
 			</div>	
 		<%end%>
+	</div>
+	<div class="pages">
+	<%= will_paginate @works%>
 	</div>
 </div>		

@@ -9,6 +9,7 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'russian'
+gem 'will_paginate'
 
 
 #gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'

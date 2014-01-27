@@ -1,10 +1,18 @@
 class LairdsController < ApplicationController
-def index
-  
-  	@lairds = if params[:category]
-  		Laird.where(category_id: params[:category] )
+
+  def index 
+    if params[:sort].present?
+      column=params[:sort].split('_').first
+      order=params[:sort].split('_').last.upcase
+    else
+      column='title'
+      order='ASC'
+    end 
+
+  	@lairds = if params[:category].present?
+  		Laird.where(category_id: params[:category]).order("#{column} #{order}")
   	else
-  		Laird.all
+  		Laird.all.order("#{column} #{order}")
   	end	
   end
 

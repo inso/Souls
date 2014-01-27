@@ -5,6 +5,9 @@
 <div class="info">
 	<div class="header2">Поміщики</div>
 	<br/>
+	<div class="sorting">
+		<b>По імені:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), lairds_path(sort: 'id_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), lairds_path(sort: 'id_desc')%>
+	</div>
 	<div class="souls">
 		<% @lairds.each do |laird| %>
 			<div class="soul grid_3">
@@ -12,9 +15,11 @@
 				<%= link_to image_tag(laird.image_url || "product_blank.gif", :alt => "home image"), laird%>
 			</div>	
 				<div>
-					<%= link_to laird.full_name, laird%>
+					<b><%= link_to laird.title, laird%></b>
 				</div>
 			</div>	
 		<%end%>
 	</div>
+	
+
 </div>	

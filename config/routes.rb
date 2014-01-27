@@ -4,7 +4,7 @@ Souls::Application.routes.draw do
   ActiveAdmin.routes(self)
   resources :souls, :lairds, :pages, :work_as
   
-  get "souls/index"
+  #get "souls/index"
   #get "souls/show"
   #get "lairds/index"
   #get "lairds/show"

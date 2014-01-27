@@ -1,5 +1,5 @@
 <% Category.all.each do |work| %>
-		<div>	
-			<%= link_to work.name, work_as_path(category: work.id) %>
-		</div>
-	<%end%>
+	<div class="categ_el">	
+		<%= link_to work.name, work_as_path(category: work.id) %>
+	</div>
+<%end%>

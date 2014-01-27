@@ -1,0 +1,748 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.1.11
+-- Dumped by pg_dump version 9.1.11
+-- Started on 2014-01-26 18:40:05 EET
+
+SET statement_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- TOC entry 174 (class 3079 OID 11679)
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- TOC entry 1973 (class 0 OID 0)
+-- Dependencies: 174
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- TOC entry 171 (class 1259 OID 24628)
+-- Dependencies: 5
+-- Name: active_admin_comments; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE active_admin_comments (
+    id integer NOT NULL,
+    namespace character varying(255),
+    body text,
+    resource_id character varying(255) NOT NULL,
+    resource_type character varying(255) NOT NULL,
+    author_id integer,
+    author_type character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.active_admin_comments OWNER TO postgres;
+
+--
+-- TOC entry 170 (class 1259 OID 24626)
+-- Dependencies: 171 5
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE active_admin_comments_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.active_admin_comments_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1974 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE active_admin_comments_id_seq OWNED BY active_admin_comments.id;
+
+
+--
+-- TOC entry 169 (class 1259 OID 24612)
+-- Dependencies: 1828 1829 1830 5
+-- Name: admin_users; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE admin_users (
+    id integer NOT NULL,
+    email character varying(255) DEFAULT ''::character varying NOT NULL,
+    encrypted_password character varying(255) DEFAULT ''::character varying NOT NULL,
+    reset_password_token character varying(255),
+    reset_password_sent_at timestamp without time zone,
+    remember_created_at timestamp without time zone,
+    sign_in_count integer DEFAULT 0 NOT NULL,
+    current_sign_in_at timestamp without time zone,
+    last_sign_in_at timestamp without time zone,
+    current_sign_in_ip character varying(255),
+    last_sign_in_ip character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.admin_users OWNER TO postgres;
+
+--
+-- TOC entry 168 (class 1259 OID 24610)
+-- Dependencies: 169 5
+-- Name: admin_users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE admin_users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.admin_users_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1975 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: admin_users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE admin_users_id_seq OWNED BY admin_users.id;
+
+
+--
+-- TOC entry 165 (class 1259 OID 16460)
+-- Dependencies: 5
+-- Name: categories; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE categories (
+    id integer NOT NULL,
+    name character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    "position" integer
+);
+
+
+ALTER TABLE public.categories OWNER TO postgres;
+
+--
+-- TOC entry 164 (class 1259 OID 16458)
+-- Dependencies: 165 5
+-- Name: categories_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE categories_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.categories_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1976 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: categories_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE categories_id_seq OWNED BY categories.id;
+
+
+--
+-- TOC entry 173 (class 1259 OID 24643)
+-- Dependencies: 5
+-- Name: lairds; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE lairds (
+    id integer NOT NULL,
+    full_name character varying(255),
+    category_id integer,
+    image character varying(255),
+    phone character varying(255),
+    email character varying(255),
+    describe text,
+    status character varying(255),
+    work_as_id integer,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.lairds OWNER TO postgres;
+
+--
+-- TOC entry 172 (class 1259 OID 24641)
+-- Dependencies: 5 173
+-- Name: lairds_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE lairds_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.lairds_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1977 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: lairds_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE lairds_id_seq OWNED BY lairds.id;
+
+
+--
+-- TOC entry 161 (class 1259 OID 16432)
+-- Dependencies: 5
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE schema_migrations (
+    version character varying(255) NOT NULL
+);
+
+
+ALTER TABLE public.schema_migrations OWNER TO postgres;
+
+--
+-- TOC entry 163 (class 1259 OID 16438)
+-- Dependencies: 5
+-- Name: souls; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE souls (
+    id integer NOT NULL,
+    name character varying(255),
+    second_name character varying(255),
+    pname character varying(255),
+    category_id integer,
+    old integer,
+    price numeric(8,2),
+    image character varying(255),
+    phone character varying(255),
+    email character varying(255),
+    describe text,
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE public.souls OWNER TO postgres;
+
+--
+-- TOC entry 162 (class 1259 OID 16436)
+-- Dependencies: 5 163
+-- Name: souls_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE souls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.souls_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1978 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: souls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE souls_id_seq OWNED BY souls.id;
+
+
+--
+-- TOC entry 167 (class 1259 OID 16468)
+-- Dependencies: 5
+-- Name: work_as; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE work_as (
+    id integer NOT NULL,
+    name character varying(255),
+    category_id integer,
+    image character varying(255),
+    old integer,
+    price numeric(8,2),
+    describe text,
+    status character varying(255),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    laird_id integer
+);
+
+
+ALTER TABLE public.work_as OWNER TO postgres;
+
+--
+-- TOC entry 166 (class 1259 OID 16466)
+-- Dependencies: 5 167
+-- Name: work_as_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE work_as_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.work_as_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 1979 (class 0 OID 0)
+-- Dependencies: 166
+-- Name: work_as_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE work_as_id_seq OWNED BY work_as.id;
+
+
+--
+-- TOC entry 1831 (class 2604 OID 24631)
+-- Dependencies: 170 171 171
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY active_admin_comments ALTER COLUMN id SET DEFAULT nextval('active_admin_comments_id_seq'::regclass);
+
+
+--
+-- TOC entry 1827 (class 2604 OID 24615)
+-- Dependencies: 168 169 169
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY admin_users ALTER COLUMN id SET DEFAULT nextval('admin_users_id_seq'::regclass);
+
+
+--
+-- TOC entry 1825 (class 2604 OID 16463)
+-- Dependencies: 165 164 165
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY categories ALTER COLUMN id SET DEFAULT nextval('categories_id_seq'::regclass);
+
+
+--
+-- TOC entry 1832 (class 2604 OID 24646)
+-- Dependencies: 173 172 173
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY lairds ALTER COLUMN id SET DEFAULT nextval('lairds_id_seq'::regclass);
+
+
+--
+-- TOC entry 1824 (class 2604 OID 16441)
+-- Dependencies: 162 163 163
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY souls ALTER COLUMN id SET DEFAULT nextval('souls_id_seq'::regclass);
+
+
+--
+-- TOC entry 1826 (class 2604 OID 16471)
+-- Dependencies: 166 167 167
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY work_as ALTER COLUMN id SET DEFAULT nextval('work_as_id_seq'::regclass);
+
+
+--
+-- TOC entry 1963 (class 0 OID 24628)
+-- Dependencies: 171 1966
+-- Data for Name: active_admin_comments; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY active_admin_comments (id, namespace, body, resource_id, resource_type, author_id, author_type, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- TOC entry 1980 (class 0 OID 0)
+-- Dependencies: 170
+-- Name: active_admin_comments_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('active_admin_comments_id_seq', 1, false);
+
+
+--
+-- TOC entry 1961 (class 0 OID 24612)
+-- Dependencies: 169 1966
+-- Data for Name: admin_users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY admin_users (id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) FROM stdin;
+2	sergiy.koshoviy@gmail.com	$2a$10$qGeg6KnWErCXfMM4c6VHBewyaF/qCchzZQlmxTd4U/K5hFH76old2	\N	\N	\N	1	2014-01-19 23:38:58.077756	2014-01-19 23:38:58.077756	127.0.0.1	127.0.0.1	2014-01-19 23:38:34.088765	2014-01-19 23:38:58.078778
+\.
+
+
+--
+-- TOC entry 1981 (class 0 OID 0)
+-- Dependencies: 168
+-- Name: admin_users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('admin_users_id_seq', 2, true);
+
+
+--
+-- TOC entry 1957 (class 0 OID 16460)
+-- Dependencies: 165 1966
+-- Data for Name: categories; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY categories (id, name, created_at, updated_at, "position") FROM stdin;
+1	Будівництво	2014-01-15 18:36:02.331348	2014-01-15 20:26:10.196795	2
+3	Економіка	2014-01-15 21:15:00.115004	2014-01-15 21:15:00.115004	4
+2	Електрика	2014-01-15 20:26:41.477955	2014-01-15 21:16:28.555437	3
+4	ІТ	2014-01-15 21:47:39.159085	2014-01-15 21:47:39.159085	5
+5	Торговля	2014-01-20 07:37:26.461745	2014-01-20 07:37:26.461745	6
+\.
+
+
+--
+-- TOC entry 1982 (class 0 OID 0)
+-- Dependencies: 164
+-- Name: categories_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('categories_id_seq', 5, true);
+
+
+--
+-- TOC entry 1965 (class 0 OID 24643)
+-- Dependencies: 173 1966
+-- Data for Name: lairds; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY lairds (id, full_name, category_id, image, phone, email, describe, status, work_as_id, created_at, updated_at) FROM stdin;
+1	ТОВ "ЛогістікКомпані"	5	8XexbT1hNpo.jpg	+3809700200399	logistic@mail.ru	Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....Наша компанія вже багато віків займається ....		\N	2014-01-20 06:48:17.687827	2014-01-21 10:07:41.800446
+\.
+
+
+--
+-- TOC entry 1983 (class 0 OID 0)
+-- Dependencies: 172
+-- Name: lairds_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('lairds_id_seq', 1, true);
+
+
+--
+-- TOC entry 1953 (class 0 OID 16432)
+-- Dependencies: 161 1966
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_migrations (version) FROM stdin;
+20131226101857
+20131226103328
+20131226103817
+20131226103853
+20140115162530
+20140115162534
+20140115172453
+20140116110205
+20140119233206
+20140119233211
+20140119235350
+20140120070616
+20140120070938
+20140120072010
+\.
+
+
+--
+-- TOC entry 1955 (class 0 OID 16438)
+-- Dependencies: 163 1966
+-- Data for Name: souls; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY souls (id, name, second_name, pname, category_id, old, price, image, phone, email, describe, status, created_at, updated_at) FROM stdin;
+2	Іванов	Анатолій	Петрович	2	54	5000.00						2014-01-15 21:10:57.693214	2014-01-15 21:10:57.693214
+1	Сапейко	Андрій	Степанович	1	35	3500.00	EbngHclzr0w.jpg	+380931234567	email@mail.ru	Хочу басейн, особисту секретаршу і ламборджині.	безробітній	2014-01-15 20:38:25.353002	2014-01-18 16:59:12.589485
+3	Шелдон	Купер		4	76	50000.00	9V7RmiJJQf8.jpg	+58906575657	mail@mail.ru	sdkfja;sldkjf asdflkjasdf asdlkfja;slkdfj asdfasdlkfj;lfkjvxcvnwkl sdfj ;dlf sdfjasl; kvxc asdfcxv asdvlxckvjlksd sdxvck asdvckjzxckv asdvxcv asdcxj;jlk zxczxcv sxvj;zxcvj ;lk		2014-01-18 18:07:36.041811	2014-01-18 18:07:36.041811
+4	Говард	Йолович	Батюшкін	2	14	250.00	D_BNHCcJn4w.jpg	+0989977787899	gov@mail.com	sdfsdkfj;lksdjlskadjc;ksdlfjca;s ;alskdjf;aslkjdf ;asdjf ;alskdjf;alksjdf a;skldfj as;ldkfjaslkjdf  as;dljkf a;sldjfk al;dkjfaslkjfd a;sjdf asl;dkjflkaskdlj oewjkf;alsdkjc;aksldjfc;oskdlac		2014-01-18 18:13:21.555972	2014-01-18 18:13:21.555972
+5	Андрій	Кожухівський	Дмитрович	3	99	120.00	q1ZfT5BYlL4.jpg	+3809908098098	email@mail.ru	sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm \r\nsdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm \r\nsdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm \r\nsdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm \r\nsdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm sdjfas;ldkjf;alskjdf;laksdjf;laskdfm 	безробітній	2014-01-24 22:12:56.282665	2014-01-24 22:12:56.282665
+6	Myname	\N	\N	3	\N	350.00	\N	\N	\N	\N	\N	2014-01-25 00:57:27.009235	2014-01-25 00:57:27.009235
+7	Myname+rand.1230	\N	\N	3	\N	750.00	\N	\N	\N	\N	\N	2014-01-25 01:00:07.27972	2014-01-25 01:00:07.27972
+8	Myname+rand(1230)	\N	\N	3	\N	750.00	\N	\N	\N	\N	\N	2014-01-25 01:00:37.83217	2014-01-25 01:00:37.83217
+9	Myname+537	\N	\N	3	\N	750.00	\N	\N	\N	\N	\N	2014-01-25 01:00:59.913156	2014-01-25 01:00:59.913156
+10	Myname 146	\N	\N	4	\N	8742.00	\N	\N	\N	\N	\N	2014-01-25 01:02:12.931646	2014-01-25 01:02:12.931646
+11	Myname 465	\N	\N	2	\N	8415.00	\N	\N	\N	\N	\N	2014-01-25 01:02:35.100844	2014-01-25 01:02:35.100844
+12	Myname 1038	\N	\N	1	\N	995.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.166554	2014-01-25 01:02:57.166554
+13	Myname 1083	\N	\N	0	\N	8043.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.198377	2014-01-25 01:02:57.198377
+14	Myname 1021	\N	\N	3	\N	1311.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.219057	2014-01-25 01:02:57.219057
+15	Myname 29	\N	\N	2	\N	8296.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.244478	2014-01-25 01:02:57.244478
+16	Myname 961	\N	\N	2	\N	295.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.264196	2014-01-25 01:02:57.264196
+17	Myname 1117	\N	\N	3	\N	9575.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.286053	2014-01-25 01:02:57.286053
+18	Myname 566	\N	\N	2	\N	4308.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.310771	2014-01-25 01:02:57.310771
+19	Myname 308	\N	\N	2	\N	2040.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.329034	2014-01-25 01:02:57.329034
+20	Myname 973	\N	\N	1	\N	2805.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.410593	2014-01-25 01:02:57.410593
+21	Myname 556	\N	\N	4	\N	7937.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.431296	2014-01-25 01:02:57.431296
+22	Myname 291	\N	\N	2	\N	269.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.44932	2014-01-25 01:02:57.44932
+23	Myname 166	\N	\N	0	\N	5899.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.465016	2014-01-25 01:02:57.465016
+24	Myname 223	\N	\N	2	\N	9111.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.482785	2014-01-25 01:02:57.482785
+25	Myname 588	\N	\N	1	\N	6327.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.505608	2014-01-25 01:02:57.505608
+26	Myname 532	\N	\N	0	\N	7406.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.527178	2014-01-25 01:02:57.527178
+27	Myname 1014	\N	\N	2	\N	2730.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.538428	2014-01-25 01:02:57.538428
+28	Myname 248	\N	\N	1	\N	8940.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.552968	2014-01-25 01:02:57.552968
+29	Myname 780	\N	\N	3	\N	8097.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.573624	2014-01-25 01:02:57.573624
+30	Myname 970	\N	\N	2	\N	6982.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.596915	2014-01-25 01:02:57.596915
+31	Myname 1211	\N	\N	0	\N	9046.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.614519	2014-01-25 01:02:57.614519
+32	Myname 201	\N	\N	2	\N	4109.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.629674	2014-01-25 01:02:57.629674
+33	Myname 484	\N	\N	4	\N	9312.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.647577	2014-01-25 01:02:57.647577
+34	Myname 985	\N	\N	0	\N	1882.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.686613	2014-01-25 01:02:57.686613
+35	Myname 527	\N	\N	3	\N	7398.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.728628	2014-01-25 01:02:57.728628
+36	Myname 215	\N	\N	3	\N	9967.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.747507	2014-01-25 01:02:57.747507
+37	Myname 211	\N	\N	1	\N	4953.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.761676	2014-01-25 01:02:57.761676
+38	Myname 287	\N	\N	1	\N	1387.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.772736	2014-01-25 01:02:57.772736
+39	Myname 371	\N	\N	0	\N	5099.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.798613	2014-01-25 01:02:57.798613
+40	Myname 300	\N	\N	3	\N	4565.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.817258	2014-01-25 01:02:57.817258
+41	Myname 418	\N	\N	0	\N	7342.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.825128	2014-01-25 01:02:57.825128
+42	Myname 281	\N	\N	0	\N	8111.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.839618	2014-01-25 01:02:57.839618
+43	Myname 1097	\N	\N	4	\N	9155.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.860664	2014-01-25 01:02:57.860664
+44	Myname 946	\N	\N	4	\N	8342.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.873866	2014-01-25 01:02:57.873866
+45	Myname 1160	\N	\N	3	\N	9081.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.894187	2014-01-25 01:02:57.894187
+46	Myname 586	\N	\N	4	\N	6383.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.906878	2014-01-25 01:02:57.906878
+47	Myname 139	\N	\N	1	\N	8832.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.927366	2014-01-25 01:02:57.927366
+48	Myname 1165	\N	\N	0	\N	7281.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.93789	2014-01-25 01:02:57.93789
+49	Myname 994	\N	\N	1	\N	5476.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.947704	2014-01-25 01:02:57.947704
+50	Myname 815	\N	\N	2	\N	4326.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.964193	2014-01-25 01:02:57.964193
+51	Myname 193	\N	\N	4	\N	109.00	\N	\N	\N	\N	\N	2014-01-25 01:02:57.984692	2014-01-25 01:02:57.984692
+52	Myname 751	\N	\N	3	\N	575.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.003455	2014-01-25 01:02:58.003455
+53	Myname 445	\N	\N	0	\N	4960.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.013926	2014-01-25 01:02:58.013926
+54	Myname 387	\N	\N	1	\N	6636.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.028905	2014-01-25 01:02:58.028905
+55	Myname 419	\N	\N	4	\N	179.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.050602	2014-01-25 01:02:58.050602
+56	Myname 20	\N	\N	0	\N	9946.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.074172	2014-01-25 01:02:58.074172
+57	Myname 609	\N	\N	3	\N	9407.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.094783	2014-01-25 01:02:58.094783
+58	Myname 778	\N	\N	1	\N	3820.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.119379	2014-01-25 01:02:58.119379
+59	Myname 191	\N	\N	4	\N	3375.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.13874	2014-01-25 01:02:58.13874
+60	Myname 522	\N	\N	1	\N	1368.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.148235	2014-01-25 01:02:58.148235
+61	Myname 846	\N	\N	3	\N	9725.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.159154	2014-01-25 01:02:58.159154
+62	Myname 1173	\N	\N	0	\N	9704.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.173772	2014-01-25 01:02:58.173772
+63	Myname 875	\N	\N	4	\N	5717.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.194489	2014-01-25 01:02:58.194489
+64	Myname 29	\N	\N	4	\N	4880.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.236275	2014-01-25 01:02:58.236275
+65	Myname 1214	\N	\N	4	\N	6381.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.249793	2014-01-25 01:02:58.249793
+66	Myname 1167	\N	\N	4	\N	6015.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.260875	2014-01-25 01:02:58.260875
+67	Myname 578	\N	\N	1	\N	8429.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.270149	2014-01-25 01:02:58.270149
+68	Myname 5	\N	\N	3	\N	9559.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.279974	2014-01-25 01:02:58.279974
+69	Myname 836	\N	\N	0	\N	3931.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.298857	2014-01-25 01:02:58.298857
+70	Myname 1061	\N	\N	1	\N	6163.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.31733	2014-01-25 01:02:58.31733
+71	Myname 1163	\N	\N	1	\N	3321.00	\N	\N	\N	\N	\N	2014-01-25 01:02:58.339301	2014-01-25 01:02:58.339301
+\.
+
+
+--
+-- TOC entry 1984 (class 0 OID 0)
+-- Dependencies: 162
+-- Name: souls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('souls_id_seq', 71, true);
+
+
+--
+-- TOC entry 1959 (class 0 OID 16468)
+-- Dependencies: 167 1966
+-- Data for Name: work_as; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY work_as (id, name, category_id, image, old, price, describe, status, created_at, updated_at, laird_id) FROM stdin;
+1	Торговий агент	4	6Olvz6klSiU.jpg	25	5500.00	На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....На посаду необхідний прицівник який .....	Вакантно	2014-01-20 07:11:20.133146	2014-01-22 08:29:03.569264	1
+2	Системний адміністратор	4	\N	35	5500.00	івівфівівфаівафівм фівафіва фіваіва фіваіва\r\nфівафіваіфва \r\nфіваіваіва	не зайнято	2014-01-22 08:41:27.718677	2014-01-22 08:41:27.718677	1
+\.
+
+
+--
+-- TOC entry 1985 (class 0 OID 0)
+-- Dependencies: 166
+-- Name: work_as_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('work_as_id_seq', 2, true);
+
+
+--
+-- TOC entry 1846 (class 2606 OID 24636)
+-- Dependencies: 171 171 1967
+-- Name: active_admin_comments_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY active_admin_comments
+    ADD CONSTRAINT active_admin_comments_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1842 (class 2606 OID 24623)
+-- Dependencies: 169 169 1967
+-- Name: admin_users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY admin_users
+    ADD CONSTRAINT admin_users_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1837 (class 2606 OID 16465)
+-- Dependencies: 165 165 1967
+-- Name: categories_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY categories
+    ADD CONSTRAINT categories_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1851 (class 2606 OID 24651)
+-- Dependencies: 173 173 1967
+-- Name: lairds_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY lairds
+    ADD CONSTRAINT lairds_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1835 (class 2606 OID 16446)
+-- Dependencies: 163 163 1967
+-- Name: souls_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY souls
+    ADD CONSTRAINT souls_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1840 (class 2606 OID 16476)
+-- Dependencies: 167 167 1967
+-- Name: work_as_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY work_as
+    ADD CONSTRAINT work_as_pkey PRIMARY KEY (id);
+
+
+--
+-- TOC entry 1847 (class 1259 OID 24638)
+-- Dependencies: 171 171 1967
+-- Name: index_active_admin_comments_on_author_type_and_author_id; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_author_type_and_author_id ON active_admin_comments USING btree (author_type, author_id);
+
+
+--
+-- TOC entry 1848 (class 1259 OID 24637)
+-- Dependencies: 171 1967
+-- Name: index_active_admin_comments_on_namespace; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_namespace ON active_admin_comments USING btree (namespace);
+
+
+--
+-- TOC entry 1849 (class 1259 OID 24639)
+-- Dependencies: 171 171 1967
+-- Name: index_active_admin_comments_on_resource_type_and_resource_id; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX index_active_admin_comments_on_resource_type_and_resource_id ON active_admin_comments USING btree (resource_type, resource_id);
+
+
+--
+-- TOC entry 1843 (class 1259 OID 24624)
+-- Dependencies: 169 1967
+-- Name: index_admin_users_on_email; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_email ON admin_users USING btree (email);
+
+
+--
+-- TOC entry 1844 (class 1259 OID 24625)
+-- Dependencies: 169 1967
+-- Name: index_admin_users_on_reset_password_token; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_admin_users_on_reset_password_token ON admin_users USING btree (reset_password_token);
+
+
+--
+-- TOC entry 1838 (class 1259 OID 24653)
+-- Dependencies: 167 1967
+-- Name: index_work_as_on_laird_id; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE INDEX index_work_as_on_laird_id ON work_as USING btree (laird_id);
+
+
+--
+-- TOC entry 1833 (class 1259 OID 16435)
+-- Dependencies: 161 1967
+-- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (version);
+
+
+--
+-- TOC entry 1972 (class 0 OID 0)
+-- Dependencies: 5
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+-- Completed on 2014-01-26 18:40:05 EET
+
+--
+-- PostgreSQL database dump complete
+--
+
