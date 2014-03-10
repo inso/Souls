@@ -1,5 +1,5 @@
 class Laird < User
-  
+
   belongs_to :category
 
   mount_uploader :image, SoulImageUploader

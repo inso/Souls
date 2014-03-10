@@ -56,40 +56,22 @@ ActiveRecord::Schema.define(version: 20140310093338) do
     t.integer  "position"
   end
 
-  create_table "lairds", force: true do |t|
-    t.string   "title"
-    t.integer  "category_id"
-    t.string   "image"
-    t.string   "phone"
-    t.string   "email"
-    t.text     "describe"
-    t.string   "status"
-    t.integer  "work_as_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "souls", force: true do |t|
-    t.string   "name"
-    t.string   "second_name"
-    t.string   "pname"
-    t.integer  "category_id"
-    t.integer  "old"
-    t.decimal  "price",       precision: 8, scale: 2
-    t.string   "image"
-    t.string   "phone"
-    t.string   "email"
-    t.text     "describe"
-    t.string   "status"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: true do |t|
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.string   "user_type"
+    t.string   "type"
+    t.string   "name"
+    t.string   "second_name"
+    t.string   "pname"
+    t.integer  "category_id"
+    t.integer  "work_as_id"
+    t.integer  "old"
+    t.decimal  "price"
+    t.string   "image"
+    t.string   "phone"
+    t.text     "describe"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
