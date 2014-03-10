@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127101030) do
+ActiveRecord::Schema.define(version: 20140310093338) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -78,6 +81,15 @@ ActiveRecord::Schema.define(version: 20140127101030) do
     t.string   "email"
     t.text     "describe"
     t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "email"
+    t.string   "password_hash"
+    t.string   "password_salt"
+    t.string   "user_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

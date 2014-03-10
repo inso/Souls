@@ -9,6 +9,15 @@
 <body>
 <div class="page">
 	<%= render '/layouts/header'%>
+    <div id="user_nav">
+        <% if current_user %>
+            Logged in as <%= current_user.email %>.
+            <%= link_to "Log out", log_out_path %>
+        <% else %>
+            <%= link_to "Sign up", sign_up_path %> or
+            <%= link_to "log in", log_in_path %>
+        <% end %>
+    </div>
 	<div class="menu">
 		<table>
 			<tr ><td><%= link_to "Головна", root_path %></td><td><%= link_to "Душі", souls_path %></td><td><%= link_to "Поміщики", lairds_path %></td><td><%= link_to "Посади", work_as_path %></td><td><%= link_to "Контакти", contact_path %></td><td><%= link_to "Про сайт", root_path %></td></tr>
