@@ -15,13 +15,13 @@
 			<div class="soul grid_3">
 				<div style="min-height:150px">
 					<%= link_to image_tag(soul.image_url(:thumb)||'product_blank.gif'), soul %>
-				</div>	
+				</div>
 				<div>
 					<%= link_to "#{soul.second_name} #{soul.name} #{soul.pname}" , soul%>
 					<%= number_to_currency(soul.price, unit: "грн", separator: ",", delimiter: "", format: "%n %u")%>
 				</div>
 				<%= link_to "Додати до співбесіди", "#", class: 'add_to_card' %>
-			</div>	
+			</div>
 		<%end%>
 	</div>
 	

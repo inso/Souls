@@ -7,13 +7,13 @@ class SoulsController < ApplicationController
     else
       column='name'
       order='ASC'
-    end 
-  	
+    end
+
     @souls = if params[:category].present?
   		Soul.where(category_id: params[:category]).order("#{column} #{order}").paginate(:page => params[:page], :per_page => 12)
   	else
   		Soul.all.order("#{column} #{order}").paginate(:page => params[:page], :per_page =>12)
-  	end	
+    end
   end
 
   def souls

@@ -5,15 +5,15 @@ class LairdsController < ApplicationController
       column=params[:sort].split('_').first
       order=params[:sort].split('_').last.upcase
     else
-      column='title'
+      column='name'
       order='ASC'
-    end 
+    end
 
   	@lairds = if params[:category].present?
   		Laird.where(category_id: params[:category]).order("#{column} #{order}")
   	else
   		Laird.all.order("#{column} #{order}")
-  	end	
+    end
   end
 
   def lairds
