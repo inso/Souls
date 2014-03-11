@@ -1,11 +1,5 @@
 class Laird < User
 
-  belongs_to :category
-
-  mount_uploader :image, SoulImageUploader
-
-  def to_param
-    "#{id}-#{Russian::transliterate(name).parameterize}"
-  end
+  has_many :wors_as
 
 end

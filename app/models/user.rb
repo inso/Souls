@@ -1,13 +1,18 @@
 class User < ActiveRecord::Base
 
-  attr_accessor :password
-  before_save :encrypt_password
+  belongs_to :category
 
+  mount_uploader :image, SoulImageUploader
+  before_save :encrypt_password
   attr_accessor :password
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
   validates_presence_of :email
   validates_uniqueness_of :email
+
+  def to_param
+    "#{id}-#{Russian::transliterate(name).parameterize}"
+  end
 
   def self.authenticate(email, password)
     user = find_by_email(email)
