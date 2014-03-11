@@ -14,6 +14,7 @@ gem 'will_paginate'
 
 #gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
 group :development, :test do
+  gem 'seed_dump'
 	gem 'rack', '1.5.2'
 	gem "thin"
 	gem "quiet_assets"
