@@ -13,11 +13,11 @@
             <%= render '/layouts/header'%>
             <div id="user_nav">
                 <% if current_user %>
-                  <% if current_user.type == 'Soul' %>
-                    Logged in as <%= link_to current_user.email, edit_soul_path(current_user.id) %>
-                  <% else %>
-                      Logged in as <%= link_to current_user.email, edit_laird_path(current_user.id) %>
-                  <% end %>
+                    <% if current_user.type == 'Soul' %>
+                        Logged in as <%= link_to current_user.email, edit_soul_path(current_user.id) %>
+                    <% else %>
+                        Logged in as <%= link_to current_user.email, edit_laird_path(current_user.id) %>
+                    <% end %>
                     <%= link_to "Log out", log_out_path %>
                 <% else %>
                     <%= link_to "Sign up", sign_up_path %> or
