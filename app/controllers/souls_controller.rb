@@ -23,4 +23,24 @@ class SoulsController < ApplicationController
   	@souls = Soul.find(params[:id])
   end
 
+  def update
+    @soul = Soul.find(params[:id])
+
+    if @soul.update(soul_params)
+      redirect_to @soul
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+    @soul = Soul.find(params[:id])
+  end
+
+  private
+
+  def soul_params
+    params.require(:soul).permit(:name, :second_name, :pname, :old, :price, :image, :phone, :describe, :status)
+  end
+
 end

@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title><%= full_title(yield(:title))%></title>
-  <%= stylesheet_link_tag    "application", media:"all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-<div class="page">
-	<%= render '/layouts/header'%>
-    <div id="user_nav">
-        <% if current_user %>
-            Logged in as <%= current_user.email %>.
-            <%= link_to "Log out", log_out_path %>
-        <% else %>
-            <%= link_to "Sign up", sign_up_path %> or
-            <%= link_to "log in", log_in_path %>
-        <% end %>
-    </div>
-	<div class="menu">
-		<table>
-			<tr ><td><%= link_to "Головна", root_path %></td><td><%= link_to "Душі", souls_path %></td><td><%= link_to "Поміщики", lairds_path %></td><td><%= link_to "Посади", work_as_path %></td><td><%= link_to "Контакти", contact_path %></td><td><%= link_to "Про сайт", root_path %></td></tr>
-		</table>
-	</div>
-	<div class="content">
-		<%= yield %>
-	</div>
-	<%= render '/layouts/footer'%>
-</div>
-</body>
+
+    <head>
+      <title><%= full_title(yield(:title))%></title>
+      <%= stylesheet_link_tag    "application", media:"all", "data-turbolinks-track" => true %>
+      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+      <%= csrf_meta_tags %>
+    </head>
+
+    <body>
+        <div class="page">
+            <%= render '/layouts/header'%>
+            <div id="user_nav">
+                <% if current_user %>
+                  <% if current_user.type == 'Soul' %>
+                    Logged in as <%= link_to current_user.email, edit_soul_path(current_user.id) %>
+                  <% else %>
+                      Logged in as <%= link_to current_user.email, edit_laird_path(current_user.id) %>
+                  <% end %>
+                    <%= link_to "Log out", log_out_path %>
+                <% else %>
+                    <%= link_to "Sign up", sign_up_path %> or
+                    <%= link_to "log in", log_in_path %>
+                <% end %>
+            </div>
+            <div class="menu">
+                <table>
+                    <tr ><td><%= link_to "Головна", root_path %></td><td><%= link_to "Душі", souls_path %></td><td><%= link_to "Поміщики", lairds_path %></td><td><%= link_to "Посади", work_as_path %></td><td><%= link_to "Контакти", contact_path %></td><td><%= link_to "Про сайт", root_path %></td></tr>
+                </table>
+            </div>
+            <div class="content">
+                <%= yield %>
+            </div>
+            <%= render '/layouts/footer'%>
+        </div>
+    </body>
+
 </html>
 

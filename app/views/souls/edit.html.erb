@@ -1,0 +1,47 @@
+<h1>Update</h1>
+
+<%= form_for @soul do |f| %>
+    <% if @soul.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @soul.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :second_name %><br />
+      <%= f.text_field :second_name %>
+    </p>
+    <p>
+      <%= f.label :pname %><br />
+      <%= f.text_field :pname %>
+    </p>
+    <p>
+      <%= f.label :old %><br />
+      <%= f.number_field :old %>
+    </p>
+    <p>
+      <%= f.label :price %><br />
+      <%= f.number_field :price %>
+    </p>
+    <p>
+      <%= f.label :phone %><br />
+      <%= f.text_field :phone %>
+    </p>
+    <p>
+      <%= f.label :describe %><br />
+      <%= f.text_field :describe %>
+    </p>
+    <p>
+      <%= f.label :status %><br />
+      <%= f.text_field :status %>
+    </p>
+    <p class="button"><%= f.submit %></p>
+<% end %>
