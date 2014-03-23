@@ -10,9 +10,9 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
-  def to_param
-    "#{id}-#{Russian::transliterate(name).parameterize}"
-  end
+  #def to_param
+  #  "#{id}-#{Russian::transliterate(name).parameterize}"
+  #end
 
   def self.authenticate(email, password)
     user = find_by_email(email)
