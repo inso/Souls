@@ -6,7 +6,7 @@ Souls::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :users, :sessions, :souls, :lairds, :pages, :work_as
+  resources :users, :sessions, :souls, :lairds, :pages, :work_as, :password_resets
   
   #get "souls/index"
   #get "souls/show"
