@@ -34,7 +34,11 @@ class LairdsController < ApplicationController
   end
 
   def edit
-    @laird = Laird.find(params[:id])
+    if current_user
+      @laird = Laird.find(params[:id])
+    else
+      redirect_to root_path
+    end
   end
 
   private
