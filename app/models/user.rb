@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   attr_accessor :password
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates_presence_of :email
+  validates_presence_of :email, :type
   validates_uniqueness_of :email
-  before_create { generate_token(:auth_token) }
+  before_create { generate_token(:auth_token); generate_token(:confirm_token) }
 
   def generate_token(column)
     begin
