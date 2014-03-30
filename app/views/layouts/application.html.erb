@@ -12,6 +12,9 @@
         <div class="page">
             <%= render '/layouts/header'%>
             <div id="user_nav">
+                <% if flash[:notice] %>
+                  <div class="notice"><%= flash[:notice] %></div>
+                <% end %>
                 <% if current_user %>
                     <% if current_user.type == 'Soul' %>
                         Logged in as <%= link_to current_user.email, edit_soul_path(current_user.id) %>
