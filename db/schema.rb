@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20140331142753) do
     t.string   "second_name"
     t.string   "pname"
     t.integer  "category_id"
+    t.integer  "work_as_id"
     t.integer  "old"
     t.decimal  "price"
     t.string   "image"
