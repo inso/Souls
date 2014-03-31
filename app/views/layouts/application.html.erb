@@ -12,20 +12,20 @@
         <div class="page">
             <%= render '/layouts/header'%>
             <div id="user_nav">
-                <% if flash[:notice] %>
-                  <div class="notice"><%= flash[:notice] %></div>
-                <% end %>
-                <% if current_user %>
-                    <% if current_user.type == 'Soul' %>
-                        Logged in as <%= link_to current_user.email, edit_soul_path(current_user.id) %>
-                    <% else %>
-                        Logged in as <%= link_to current_user.email, edit_laird_path(current_user.id) %>
-                    <% end %>
-                    <%= link_to "Log out", log_out_path %>
-                <% else %>
-                    <%= link_to "Sign up", sign_up_path %> or
-                    <%= link_to "log in", log_in_path %>
-                <% end %>
+                <%- flash.each do |name, msg| -%>
+                  <%= content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String) %>
+                <%- end -%>
+              <% if user_signed_in? -%>
+                  <div id="user_login_box">
+                    <%= current_user.email %> |
+                    <%= link_to 'My info', edit_user_registration_path %> |
+                    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                  </div>
+              <% end -%>
+              <% unless user_signed_in? -%>
+                  <p><%= link_to 'Sign up as User', new_user_registration_path %></p>
+                  <p><%= link_to 'Sign in as User', new_user_session_path %></p>
+              <% end -%>
             </div>
             <div class="menu">
                 <table>
