@@ -266,6 +266,7 @@ DEPENDENCIES
   capybara
   carrierwave
   coffee-rails (~> 4.0.0)
+  devise
   factory_girl_rails
   guard-rspec
   jbuilder (~> 1.2)

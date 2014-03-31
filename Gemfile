@@ -10,6 +10,7 @@ gem 'carrierwave'
 gem 'rmagick'
 gem 'russian'
 gem 'will_paginate'
+gem 'devise'
 
 
 #gem 'requirejs-rails', git: 'git://github.com/jwhitley/requirejs-rails.git'
