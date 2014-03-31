@@ -1,25 +1,26 @@
 <% provide(:title, 'Laird') %>
 <div class="category">
-		<%= render '/lairds/menu'%>
+		<%= render '/lairds/menu' %>
 </div>
 <div class="info">
 	<div class="header2">Поміщики</div>
 	<br/>
 	<div class="sorting">
-		<b>По імені:</b><%= link_to image_tag("../str.jpeg", size:"20x20" ), lairds_path(sort: 'id_asc')%><%= link_to image_tag("../str1.jpeg", size:"20x20"), lairds_path(sort: 'id_desc')%>
+		<b>По імені:</b>
+      <%= link_to image_tag("../str.jpeg", size:"20x20" ), lairds_path(sort: 'id_asc') %>
+      <%= link_to image_tag("../str1.jpeg", size:"20x20"), lairds_path(sort: 'id_desc') %>
 	</div>
 	<div class="souls">
 		<% @lairds.each do |laird| %>
 			<div class="soul grid_3">
 			<div style="min-height:150px">
-				<%= link_to image_tag(laird.image_url || "product_blank.gif", :alt => "home image"), laird%>
-			</div>	
+				<%= link_to image_tag("product_blank.gif", :alt => "home image"), laird %>
+			</div>
 				<div>
-					<b><%= link_to laird.name, laird%></b>
+					<b><%= link_to laird.name, laird %></b>
 				</div>
-			</div>	
-		<%end%>
+			</div>
+		<% end %>
 	</div>
-	
 
 </div>	
