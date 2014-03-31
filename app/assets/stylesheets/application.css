@@ -32,6 +32,14 @@
 	margin-left: 20px;
 }
 
+#user_nav {
+    text-align: right;
+}
+
+#user_nav > p {
+    display: inline;
+}
+
 .page {
 	width: 900px;
 	margin:0 auto;
