@@ -2,10 +2,10 @@
 <html>
 
     <head>
-      <title><%= full_title(yield(:title))%></title>
-      <%= stylesheet_link_tag    "application", media:"all", "data-turbolinks-track" => true %>
-      <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-      <%= csrf_meta_tags %>
+        <title><%= full_title(yield(:title))%></title>
+        <%= stylesheet_link_tag    "application", media:"all", "data-turbolinks-track" => true %>
+        <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+        <%= csrf_meta_tags %>
     </head>
 
     <body>
@@ -13,25 +13,31 @@
             <%= render '/layouts/header'%>
             <div id="user_nav">
                 <%- flash.each do |name, msg| -%>
-                  <%= content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String) %>
+                    <%= content_tag :div, msg, id: "flash_#{name}" if msg.is_a?(String) %>
                 <%- end -%>
-              <% if user_signed_in? -%>
-                  <div id="user_login_box">
-                    <%= current_user.email %> |
 
-                    <% if current_user.type == 'Soul' %>
-                        <%= link_to 'My info', edit_soul_path(current_user.id) %> |
-                    <% else %>
-                        <%= link_to 'My info', edit_laird_path(current_user.id) %> |
+                <% if user_signed_in? -%>
+                    <% if current_user.is_a? Laird %>
+                        <%= link_to 'Add work as', new_work_a_path %>
                     <% end %>
 
-                    <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-                  </div>
-              <% end -%>
-              <% unless user_signed_in? -%>
-                  <p><%= link_to 'Sign up as User', new_user_registration_path %></p>
-                  <p><%= link_to 'Sign in as User', new_user_session_path %></p>
-              <% end -%>
+                    <div id="user_login_box">
+                        <%= current_user.email %> |
+
+                        <% if current_user.is_a? Soul %>
+                            <%= link_to 'My info', edit_soul_path(current_user.id) %> |
+                        <% else %>
+                            <%= link_to 'My info', edit_laird_path(current_user.id) %> |
+                        <% end %>
+
+                        <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+                    </div>
+                <% end -%>
+
+                <% unless user_signed_in? -%>
+                    <p><%= link_to 'Sign up as User', new_user_registration_path %></p>
+                    <p><%= link_to 'Sign in as User', new_user_session_path %></p>
+                <% end -%>
             </div>
             <div class="menu">
                 <table>
@@ -46,4 +52,3 @@
     </body>
 
 </html>
-
