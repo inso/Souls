@@ -36,6 +36,15 @@
     text-align: right;
 }
 
+#add_work {
+    display: inline-block;
+    float: left;
+}
+
+#user_login_box {
+    display: inline-block;
+}
+
 #user_nav > p {
     display: inline;
 }
