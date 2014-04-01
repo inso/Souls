@@ -22,7 +22,9 @@
 					<%= link_to "#{soul.second_name} #{soul.name} #{soul.pname}" , soul %>
 					<%= number_to_currency(soul.price, unit: "грн", separator: ",", delimiter: "", format: "%n %u") %>
 				</div>
-				<%= link_to "Додати до співбесіди", "#", class: 'add_to_card' %>
+                <% if current_user.is_a? Laird %>
+				    <%= link_to "Додати до співбесіди", "#", class: 'add_to_card' %>
+                <% end %>
 			</div>
 		<% end %>
 	</div>
