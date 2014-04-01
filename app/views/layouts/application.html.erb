@@ -17,9 +17,11 @@
                 <%- end -%>
 
                 <% if user_signed_in? -%>
-                    <% if current_user.is_a? Laird %>
-                        <%= link_to 'Add work as', new_work_a_path %>
-                    <% end %>
+                    <div id="add_work">
+                        <% if current_user.is_a? Laird %>
+                            <%= link_to 'Add work as', new_work_a_path %>
+                        <% end %>
+                    </div>
 
                     <div id="user_login_box">
                         <%= current_user.email %> |
