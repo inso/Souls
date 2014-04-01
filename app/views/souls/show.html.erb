@@ -5,85 +5,46 @@
 <div class="info">	
 	<div class="header2">Мертві душі</div>
 	<br/>
-	
 	<br/>
-
 	<div class="shot_info">
-	<table class="tab">
-		<tr>
-			<td rowspan="8" width="40%"><p><%= image_tag(@souls.image_url || 'product_blank.gif', width: "250px", alt: "photo lairds") %></p></td>
-			<td width="100px" >
-				<h4>Прізвище: </h4>
-			</td>
-			<td width="150px" align="right">
-				<%= @souls.second_name%>
-			</td>
-		</tr>
-		<div class="souls">
-				
+        <table class="tab">
+            <tr>
+                <td rowspan="8" width="40%"><p><%= image_tag('product_blank.gif', width: "250px", alt: "photo lairds") %></p></td>
+                <td width="100px" ><h4>Прізвище: </h4></td>
+                <td width="150px" align="right"><%= @souls.second_name%></td>
+            </tr>
+            <tr>
+                <td><h4>Ім'я: </h4></td>
+                <td><%= @souls.name %></td>
+            </tr>
+            <tr>
+                <td><h4>По-батькові: </h4></td>
+                <td><%= @souls.pname %></td>
+            </tr>
+            <tr>
+                <td><h4>Вік: </h4></td>
+                <td><%= @souls.old %></td>
+            </tr>
+            <tr>
+                <td><h4>Спеціальність: </h4></td>
+                <td><%= @souls.category_id %></td>
+            </tr>
+            <tr>
+                <td><h4>Заробітня плата: </h4></td>
+                <td><%= @souls.price %></td>
+            </tr>
+            <tr>
+                <td><h4>Телефон: </h4></td>
+                <td><%= @souls.phone %></td>
+            </tr>
+            <tr>
+                <td><h4>email: </h4></td>
+                <td><%= @souls.email %></td>
+            </tr>
+        </table>
 	</div>
-		<tr>	
-			<td >
-					<h4>Ім'я: </h4>
-			</td>
-			<td>
-					<%= @souls.name %>
-			</td>
-		</tr>
-		<tr>	
-			<td >
-					<h4>По-батькові: </h4>
-			</td>
-			<td>
-					<%= @souls.pname %>
-			</td>
-		</tr>
-		<tr>	
-			<td >
-					<h4>Вік: </h4>
-			</td>
-			<td>
-					<%= @souls.old %>
-			</td>
-		</tr>
-		<tr>
-			<td >
-					<h4>Спеціальність: </h4>
-			</td>
-			<td>
-					<%= @souls.category %>
-			</td>
-		</tr>
-		<tr>
-			<td >
-					<h4>Заробітня плата: </h4>
-			</td>
-			<td>
-					<%= @souls.price %>
-			</td>
-		</tr>
-		<tr>	
-			<td >
-					<h4>Телефон: </h4>
-			</td>
-			<td>
-					<%= @souls.phone %>
-			</td>
-		</tr>
-		<tr>	
-			<td >
-					<h4>email: </h4>
-			</td>
-			<td>
-					<%= @souls.email %>
-			</td>
-		</tr>
-	</table>	
-				
-		
-	</div>
+
 	<div class="full_info">
 		<%= @souls.describe %>
-
 	</div>
-</div>	
+</div>
