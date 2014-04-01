@@ -40,6 +40,10 @@
     display: inline;
 }
 
+.tab td {
+    vertical-align: middle;
+}
+
 .page {
 	width: 900px;
 	margin:0 auto;
