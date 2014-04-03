@@ -1,59 +1,41 @@
 <div class="category">
-		<%= render '/lairds/menu'%>
+		<%= render '/lairds/menu' %>
 </div>
 
 <div class="info">	
 	<div class="header2">Поміщики</div>
 	<br/>
-	<h1><%= @lairds.title%></h1>
+	<h1><%= @lairds.name %></h1>
 
 	<div class="shot_info">
 		<table class="tab">
 			<tr>
-				<td rowspan="5" width="50%"><p><%= image_tag(@lairds.image_url || 'product_blank.gif', width: "250", alt: "photo lairds") %></p></td>
-				<td width="100px" >
-					<h4>Спеціалізація: </h4>
-				</td>
-				<td width="150px" align="right">
-					<%= @lairds.category.name%>
-				</td>
+				<td rowspan="5" width="50%"><p><%= image_tag('product_blank.gif', width: "250", alt: "photo lairds") %></p></td>
+				<td width="100px" ><h4>Спеціалізація: </h4></td>
+				<!--<td width="150px" align="right">-->
+					<% #@lairds.category.name %>
+				<!--</td>-->
 			</tr>
-			<tr>	
-				<td >
-						<h4>Телефон: </h4>
-				</td>
-				<td>
-						<%= @lairds.phone%>
-				</td>
+			<tr>
+				<td><h4>Телефон: </h4></td>
+				<td><%= @lairds.phone %></td>
 			</tr>
-			<tr>	
-				<td >
-						<h4>email: </h4>
-				</td>
-				<td>
-						<%= @lairds.email%>
-				</td>
+			<tr>
+				<td><h4>email: </h4></td>
+				<td><%= @lairds.email %></td>
 			</tr>
-			<tr>	
-				<td >
-						<h4>Посади: </h4>
-				</td>
-				<td>
-						<%= @lairds.work_as_id%>
-				</td>
+			<tr>
+				<td><h4>Посади: </h4></td>
+				<td><%= @lairds.work_as_id %></td>
 			</tr>
-			<tr>	
-				<td >
-						<h4>Статус: </h4>
-				</td>
-				<td>
-						<%= @lairds.status%>
-				</td>
+			<tr>
+				<td><h4>Статус: </h4></td>
+				<td><%= @lairds.status %></td>
 			</tr>
 		</table>	
 	</div>
 	<div class="full_info">
-		<%= @lairds.describe%>
+		<%= @lairds.describe %>
 	</div>
 </div>	
 

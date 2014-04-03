@@ -1,0 +1,35 @@
+<h1>Update</h1>
+
+<%= form_for @laird do |f| %>
+    <% if @laird.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @laird.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :category_id %><br />
+      <%= f.number_field :category_id %>
+    </p>
+    <p>
+      <%= f.label :phone %><br />
+      <%= f.text_field :phone %>
+    </p>
+    <p>
+      <%= f.label :describe %><br />
+      <%= f.text_field :describe %>
+    </p>
+    <p>
+      <%= f.label :status %><br />
+      <%= f.text_field :status %>
+    </p>
+    <p class="button"><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,39 @@
+<h2>Редагувати вакансію</h2>
+
+<%= form_for @works do |f| %>
+    <% if @works.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+            <% for message in @works.errors.full_messages %>
+                <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    <div>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :category_id %><br />
+      <%= select('categories', 'id', Category.all.collect {|c| [c.name, c.id] } ) %>
+    </div>
+    <div>
+      <%= f.label :old %><br />
+      <%= f.text_field :old %>
+    </div>
+    <div>
+      <%= f.label :price %><br />
+      <%= f.text_field :price %>
+    </div>
+    <div>
+      <%= f.label :describe %><br />
+      <%= f.text_field :describe %>
+    </div>
+    <div>
+      <%= f.label :status %><br />
+      <%= f.text_field :status %>
+    </div>
+    <div class="button"><%= f.submit %></div>
+<% end %>

@@ -1,9 +1,5 @@
-class Laird < ActiveRecord::Base
-belongs_to :category
+class Laird < User
 
-mount_uploader :image, SoulImageUploader
-def to_param
-	"#{id}-#{Russian::transliterate(title).parameterize}"		
-end
+  has_many :wors_as
 
 end

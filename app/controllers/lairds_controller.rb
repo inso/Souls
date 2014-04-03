@@ -5,15 +5,15 @@ class LairdsController < ApplicationController
       column=params[:sort].split('_').first
       order=params[:sort].split('_').last.upcase
     else
-      column='title'
+      column='name'
       order='ASC'
-    end 
+    end
 
   	@lairds = if params[:category].present?
   		Laird.where(category_id: params[:category]).order("#{column} #{order}")
   	else
   		Laird.all.order("#{column} #{order}")
-  	end	
+    end
   end
 
   def lairds
@@ -22,4 +22,29 @@ class LairdsController < ApplicationController
   def show
   	@lairds = Laird.find(params[:id])
   end
+
+  def update
+    @laird = Laird.find(params[:id])
+
+    if @laird.update(laird_params)
+      redirect_to @laird
+    else
+      render 'edit'
+    end
+  end
+
+  def edit
+    if current_user
+      @laird = Laird.find(params[:id])
+    else
+      redirect_to root_path
+    end
+  end
+
+  private
+
+  def laird_params
+    params.require(:laird).permit(:name, :category_id, :image, :phone, :describe, :status, :work_as_id)
+  end
+
 end

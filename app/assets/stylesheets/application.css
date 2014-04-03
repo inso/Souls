@@ -13,37 +13,57 @@
  *= require text
  *= require 960_12_col
  *= require souls.css.scss
+ *= require bootstrap.min
  */
  a {
 	text-decoration: none;
 	color: black;
 }
 
-.header
-{
+.header {
 	height: 100px;
 	margin-top: 30px;
 }
-.header1{font-size: 40px;}
-.header2
-{
+
+.header1 {font-size: 40px;}
+
+.header2 {
 	font-size: 30px;
 	margin-left: 20px;
 }
-.page
-{
+
+#user_nav {
+    text-align: right;
+}
+
+#add_work {
+    display: inline-block;
+    float: left;
+}
+
+#user_login_box {
+    display: inline-block;
+}
+
+#user_nav > p {
+    display: inline;
+}
+
+.tab td {
+    vertical-align: middle;
+}
+
+.page {
 	width: 900px;
 	margin:0 auto;
 }
 
-.content
-{
+.content {
 	width: 900px;
 	margin-bottom: 150px;
 }
 
-.info
-{
+.info {
 	margin-top: 20px;
 	margin-left: 200px;
 	padding-left: 20px;
@@ -53,44 +73,52 @@
 .shot_info {padding-left: 10px;}
 .full_info {padding-left: 10px;}
 
-.menu
-{
+.menu {
 	display: block;
 	width: 100%;
 	background-color: #1E6EFA;
 	text-align: center;
 }
 
+.menu a {
+    color: #000000;
+}
+
 .menu a:hover {
 	display: block;
-	background-color: #2FC8FE;}
+	background-color: #2FC8FE;
+}
 
-.category
-{
+.category {
 	width: 200px;
 	text-align: center;
 	float: left;
 }
 
-.categ_el{
+.categ_el {
 	width: 200px;
 	display: block;
-	background-color: #1E6EFA;}
+	background-color: #1E6EFA;
+}
+
+.categ_el > a {
+    color: #000000;
+}
+
 .categ_el a:hover {
 	display: block;
-	background-color: #2FC8FE;}
+	background-color: #2FC8FE;
+}
 
 .menu td {
 	text-align: center; 
 	vertical-align: top;
 	align: center; 
 	width: 150px;
-
-
 }
 
-.add_to_card{background-color: #2AEF56;}
-a.add_to_card:hover   {background-color:red;}
+.add_to_card {background-color: #2AEF56;}
+a.add_to_card:hover {background-color:red;}
 
 .pages {
 	clear: both;
