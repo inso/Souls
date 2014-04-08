@@ -11,25 +11,21 @@
           </ul>
         </div>
     <% end %>
-    <p>
+    <div>
       <%= f.label :name %><br />
       <%= f.text_field :name %>
-    </p>
-    <p>
+    </div><br />
+    <div>
       <%= f.label :category_id %><br />
-      <%= f.number_field :category_id %>
-    </p>
-    <p>
+      <%= select('categories', 'id', Category.all.collect {|c| [c.name, c.id] } ) %>
+    </div><br />
+    <div>
       <%= f.label :phone %><br />
       <%= f.text_field :phone %>
-    </p>
-    <p>
+    </div><br />
+    <div>
       <%= f.label :describe %><br />
-      <%= f.text_field :describe %>
-    </p>
-    <p>
-      <%= f.label :status %><br />
-      <%= f.text_field :status %>
-    </p>
-    <p class="button"><%= f.submit %></p>
+      <%= f.text_area :describe %>
+    </div><br />
+    <div class="button"><%= f.submit %></div>
 <% end %>
