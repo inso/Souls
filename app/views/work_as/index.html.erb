@@ -25,8 +25,9 @@
                     <% if current_user.id == work[:laird_id] %>
                         <%= link_to 'Редагувати вакансію', edit_work_a_url(work.id), class: 'add_to_card' %>
                     <% end %>
-                <% else %>
+                <% elsif current_user.is_a? Soul %>
                     <%= link_to "Замовити співбесіду", "#", class: 'add_to_card' %>
+                <% else %>
                 <% end %>
 			</div>	
 		<%end%>
