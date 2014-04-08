@@ -14,26 +14,18 @@
     <div>
       <%= f.label :name %><br />
       <%= f.text_field :name %>
-    </div>
+    </div><br />
     <div>
       <%= f.label :category_id %><br />
       <%= select('categories', 'id', Category.all.collect {|c| [c.name, c.id] } ) %>
-    </div>
-    <div>
-      <%= f.label :old %><br />
-      <%= f.text_field :old %>
-    </div>
+    </div><br />
     <div>
       <%= f.label :price %><br />
       <%= f.text_field :price %>
-    </div>
+    </div><br />
     <div>
       <%= f.label :describe %><br />
-      <%= f.text_field :describe %>
-    </div>
-    <div>
-      <%= f.label :status %><br />
-      <%= f.text_field :status %>
-    </div>
+      <%= f.text_area :describe %>
+    </div><br />
     <div class="button"><%= f.submit %></div>
 <% end %>
