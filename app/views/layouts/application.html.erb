@@ -27,9 +27,9 @@
                         <%= current_user.email %> |
 
                         <% if current_user.is_a? Soul %>
-                            <%= link_to 'My info', edit_soul_path(current_user.id) %> |
+                            <%= link_to 'My info', soul_path(current_user.id) %> |
                         <% else %>
-                            <%= link_to 'My info', edit_laird_path(current_user.id) %> |
+                            <%= link_to 'My info', laird_path(current_user.id) %> |
                         <% end %>
 
                         <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
