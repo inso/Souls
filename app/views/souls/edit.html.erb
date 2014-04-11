@@ -41,7 +41,7 @@
     </div><br />
     <div>
       <%= f.label :status %><br />
-      <%= select_tag :status, options_for_select([ "Free", "Busy" ], "Free") %>
+      <%= f.select :status, options_for_select([ "Free", "Busy" ], @soul.status) %>
     </div><br />
     <div class="button"><%= f.submit %></div>
 <% end %>
