@@ -1,10 +1,9 @@
-<div class="category">
-		<%= render '/souls/menu'%>
-</div>
-
-<div class="info">	
-	<div class="header2">Мертві душі</div>
+<div>
+	<div class="header2">Мертва душа</div>
 	<br/>
+    <% if @souls.id == current_user.id %>
+        <%= link_to 'Edit info', edit_soul_path(current_user.id) %>
+    <% end %>
 	<br/>
 	<div class="shot_info">
         <table class="tab">
@@ -40,6 +39,10 @@
             <tr>
                 <td><h4>email: </h4></td>
                 <td><%= @souls.email %></td>
+            </tr>
+            <tr>
+                <td><h4>status: </h4></td>
+                <td><%= @souls.status %></td>
             </tr>
         </table>
 	</div>
