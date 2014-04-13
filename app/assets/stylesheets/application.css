@@ -27,9 +27,15 @@ textarea {
 .header {
 	height: 100px;
 	margin-top: 30px;
+	display: inline-block;
+	width: 100%;
 }
 
-.header1 {font-size: 40px;}
+.header1 {
+	font-size: 40px;
+	float: left;
+	width: 65%;
+}
 
 .header2 {
 	font-size: 30px;
@@ -37,7 +43,9 @@ textarea {
 }
 
 #user_nav {
-    text-align: right;
+  text-align: right;
+  float: right;
+	width: 35%;
 }
 
 #add_work {
@@ -78,7 +86,7 @@ textarea {
 .full_info {padding-left: 10px;}
 
 .menu {
-	display: block;
+	/*display: block;*/
 	width: 100%;
 	background-color: #1E6EFA;
 	text-align: center;
